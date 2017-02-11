@@ -9,7 +9,7 @@ namespace CompiledReflection
     /// <summary>
     ///     Finds and wraps constructors that match the type parameters of <see cref="Func{TResult}" />s
     /// </summary>
-    public static class Constructors
+    public static class Constructor
     {
         #region AsFunc
 

@@ -5,7 +5,7 @@ using NUnit.Framework;
 namespace CompiledReflection.Test
 {
     [TestFixture]
-    public class TestConstructors
+    public class TestConstructor
     {
         private const long Ticks = 120398120;
         private const DateTimeKind Kind = DateTimeKind.Utc;
@@ -19,7 +19,7 @@ namespace CompiledReflection.Test
         public void TestFuncForConstructorThatDoesntExist()
         {
             Assert.That(
-                () => Constructors.AsFunc<bool, DateTime>()(true),
+                () => Constructor.AsFunc<bool, DateTime>()(true),
                 Throws.Exception
             );
         }
@@ -28,7 +28,7 @@ namespace CompiledReflection.Test
         public void TestFunc1()
         {
             Assert.That(
-                Constructors.AsFunc<long, DateTime>()(Ticks),
+                Constructor.AsFunc<long, DateTime>()(Ticks),
                 Is.EqualTo(new DateTime(Ticks))
             );
         }
@@ -37,7 +37,7 @@ namespace CompiledReflection.Test
         public void TestFunc2()
         {
             Assert.That(
-                Constructors.AsFunc<long, DateTimeKind, DateTime>()(Ticks, Kind),
+                Constructor.AsFunc<long, DateTimeKind, DateTime>()(Ticks, Kind),
                 Is.EqualTo(new DateTime(Ticks, Kind))
             );
         }
@@ -46,7 +46,7 @@ namespace CompiledReflection.Test
         public void TestFunc3()
         {
             Assert.That(
-                Constructors.AsFunc<int, int, int, DateTime>()(Year, Month, Day),
+                Constructor.AsFunc<int, int, int, DateTime>()(Year, Month, Day),
                 Is.EqualTo(new DateTime(Year, Month, Day))
             );
         }
@@ -55,7 +55,7 @@ namespace CompiledReflection.Test
         public void TestFunc4()
         {
             Assert.That(
-                Constructors.AsFunc<int, int, int, Calendar, DateTime>()(Year, Month, Day, Calendar),
+                Constructor.AsFunc<int, int, int, Calendar, DateTime>()(Year, Month, Day, Calendar),
                 Is.EqualTo(new DateTime(Year, Month, Day, Calendar))
             );
         }
@@ -68,7 +68,7 @@ namespace CompiledReflection.Test
         public void TestLambdaForConstructorThatDoesntExist()
         {
             Assert.That(
-                () => Constructors.AsLambda<bool, DateTime>().Compile()(true),
+                () => Constructor.AsLambda<bool, DateTime>().Compile()(true),
                 Throws.Exception
             );
         }
@@ -77,7 +77,7 @@ namespace CompiledReflection.Test
         public void TestLambda1()
         {
             Assert.That(
-                Constructors.AsLambda<long, DateTime>().Compile()(Ticks),
+                Constructor.AsLambda<long, DateTime>().Compile()(Ticks),
                 Is.EqualTo(new DateTime(Ticks))
             );
         }
@@ -86,7 +86,7 @@ namespace CompiledReflection.Test
         public void TestLambda2()
         {
             Assert.That(
-                Constructors.AsLambda<long, DateTimeKind, DateTime>().Compile()(Ticks, Kind),
+                Constructor.AsLambda<long, DateTimeKind, DateTime>().Compile()(Ticks, Kind),
                 Is.EqualTo(new DateTime(Ticks, Kind))
             );
         }
@@ -95,7 +95,7 @@ namespace CompiledReflection.Test
         public void TestLambda3()
         {
             Assert.That(
-                Constructors.AsLambda<int, int, int, DateTime>().Compile()(Year, Month, Day),
+                Constructor.AsLambda<int, int, int, DateTime>().Compile()(Year, Month, Day),
                 Is.EqualTo(new DateTime(Year, Month, Day))
             );
         }
@@ -104,7 +104,7 @@ namespace CompiledReflection.Test
         public void TestLambda4()
         {
             Assert.That(
-                Constructors.AsLambda<int, int, int, Calendar, DateTime>().Compile()(Year, Month, Day, Calendar),
+                Constructor.AsLambda<int, int, int, Calendar, DateTime>().Compile()(Year, Month, Day, Calendar),
                 Is.EqualTo(new DateTime(Year, Month, Day, Calendar))
             );
         }
