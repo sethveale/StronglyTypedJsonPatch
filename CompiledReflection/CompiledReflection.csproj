@@ -84,8 +84,8 @@
     <Compile Include="Constructor.cs" />
     <Compile Include="ContractHelperExtensions.cs" />
     <Compile Include="DeReference.cs" />
+    <Compile Include="Invocation\ActionInvoker.cs" />
     <Compile Include="Invocation\FuncInvoker.cs" />
-    <Compile Include="Method.cs" />
     <Compile Include="ValuesOf.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

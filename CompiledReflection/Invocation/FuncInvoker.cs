@@ -48,7 +48,7 @@ namespace CompiledReflection.Invocation
                 throw new NotSupportedException("All parameters must be input only, out and ref don't work in a func");
 
             if (method.ReturnType == typeof(void))
-                throw new NotSupportedException("Must have a return type to be a Func, use MemberActionInvoker instead");
+                throw new NotSupportedException("Must have a return type to be a Func, use ActionInvoker instead");
 
             var typeParameters = method.IsStatic ? new Type[0] : new[] { method.DeclaringType };
             typeParameters = typeParameters.Concat(parameters.Select(p => p.ParameterType))
