@@ -87,7 +87,9 @@
     <Compile Include="Invocation\ActionInvoker.cs" />
     <Compile Include="Invocation\FuncInvoker.cs" />
     <Compile Include="Accessors.cs" />
+    <Compile Include="Modifiers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Values.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
