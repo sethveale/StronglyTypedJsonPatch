@@ -86,7 +86,7 @@
     <Compile Include="DeReference.cs" />
     <Compile Include="Invocation\ActionInvoker.cs" />
     <Compile Include="Invocation\FuncInvoker.cs" />
-    <Compile Include="ValuesOf.cs" />
+    <Compile Include="Accessors.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -55,7 +55,7 @@
     <Compile Include="Invocation\TestFuncInvoker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestConstructor.cs" />
-    <Compile Include="TestValuesOf.cs" />
+    <Compile Include="TestAccessors.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CompiledReflection\CompiledReflection.csproj">

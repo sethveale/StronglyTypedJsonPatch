@@ -10,7 +10,7 @@ namespace CompiledReflection
     /// <summary>
     ///     Helper for accessing (public) fields and properties of objects (i.e. not static members)
     /// </summary>
-    public static class ValuesOf<T>
+    public static class Accessors<T>
     {
         // The static member in generic is entirely intentional
         // ReSharper disable StaticMemberInGenericType

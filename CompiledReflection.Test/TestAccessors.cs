@@ -5,7 +5,7 @@ using SethrysTestDomain;
 namespace CompiledReflection.Test
 {
     [TestFixture]
-    public class TestValuesOf
+    public class TestAccessors
     {
         private Book _book;
 
@@ -25,14 +25,14 @@ namespace CompiledReflection.Test
         [Test]
         public void TestPropertyAsFunc()
         {
-            var author = ValuesOf<Book>.AsFunc<string>("Author");
+            var author = Accessors<Book>.AsFunc<string>("Author");
             Assert.That(author(_book), Is.EqualTo(_book.Author));
         }
 
         [Test]
         public void TestFieldAsFunc()
         {
-            var name = ValuesOf<Book>.AsFunc<string>("Name");
+            var name = Accessors<Book>.AsFunc<string>("Name");
             Assert.That(name(_book), Is.EqualTo(_book.Name));
         }
 
@@ -40,7 +40,7 @@ namespace CompiledReflection.Test
         public void TestAsFuncNameNotFound()
         {
             Assert.That(
-                () => ValuesOf<Book>.AsFunc<string>("Author5"),
+                () => Accessors<Book>.AsFunc<string>("Author5"),
                 Throws.InstanceOf<MissingMemberException>()
             );
         }
@@ -49,7 +49,7 @@ namespace CompiledReflection.Test
         public void TestAsFuncTypeNotFound()
         {
             Assert.That(
-                () => ValuesOf<Book>.AsFunc<long>("Author"),
+                () => Accessors<Book>.AsFunc<long>("Author"),
                 Throws.InstanceOf<MissingMemberException>()
             );
         }
@@ -61,14 +61,14 @@ namespace CompiledReflection.Test
         [Test]
         public void TestPropertyAsLambda()
         {
-            var author = ValuesOf<Book>.AsLambda<string>("Author");
+            var author = Accessors<Book>.AsLambda<string>("Author");
             Assert.That(author.Compile()(_book), Is.EqualTo(_book.Author));
         }
 
         [Test]
         public void TestFieldAsLambda()
         {
-            var name = ValuesOf<Book>.AsLambda<string>("Name");
+            var name = Accessors<Book>.AsLambda<string>("Name");
             Assert.That(name.Compile()(_book), Is.EqualTo(_book.Name));
         }
 
@@ -76,7 +76,7 @@ namespace CompiledReflection.Test
         public void TestAsLambdaNameNotFound()
         {
             Assert.That(
-                () => ValuesOf<Book>.AsLambda<string>("Author5"),
+                () => Accessors<Book>.AsLambda<string>("Author5"),
                 Throws.InstanceOf<MissingMemberException>()
             );
         }
@@ -85,7 +85,7 @@ namespace CompiledReflection.Test
         public void TestAsLambdaTypeNotFound()
         {
             Assert.That(
-                () => ValuesOf<Book>.AsLambda<long>("Author"),
+                () => Accessors<Book>.AsLambda<long>("Author"),
                 Throws.InstanceOf<MissingMemberException>()
             );
         }
