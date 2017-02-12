@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using CompiledReflection.Invocation;
 using NUnit.Framework;
 using SethrysTestDomain;
@@ -35,6 +36,13 @@ namespace CompiledReflection.Test.Invocation
         {
             var endsWith = FuncInvoker.Create(typeof(string).GetMethod("EndsWith", new[] { typeof(string), typeof(StringComparison) }));
             Assert.That((bool) endsWith.Invoke(_string, "BAR", StringComparison.OrdinalIgnoreCase), Is.True);
+        }
+
+        [Test]
+        public void TestStaticInvoke1()
+        {
+            var checkHostName = FuncInvoker.Create(typeof(Uri).GetMethod("CheckHostName"));
+            Assert.That((UriHostNameType) checkHostName.Invoke("www.test.com"), Is.EqualTo(UriHostNameType.Dns));
         }
     }
 }
