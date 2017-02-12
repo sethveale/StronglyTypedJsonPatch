@@ -43,26 +43,57 @@ namespace CompiledReflection
 
         private static Expression<Func<T, TValue>> MakeLambda<TValue>(string name)
         {
-            var propertyOrField = typeof(T).GetMember(name)
-                .Select(m => Tuple.Create(m as PropertyInfo, m as FieldInfo))
-                .FirstOrDefault(t =>
-                        ((t.Item1 != null) && (t.Item1.PropertyType == typeof(TValue))) ||
-                        ((t.Item2 != null) && (t.Item2.FieldType == typeof(TValue)))
-                );
-
-            if (propertyOrField == null)
-                throw new MissingMemberException(typeof(T).Name, name);
+            var propertyOrField = AsMember<TValue>(name);
+            var member = (MemberInfo)propertyOrField.Item1 ?? propertyOrField.Item2;
+            Contract.Assume(member is PropertyInfo || member is FieldInfo);
 
             var objParam = Expression.Parameter(typeof(T));
             Contract.Assume(objParam != null);
-
-            var member = (MemberInfo) propertyOrField.Item1 ?? propertyOrField.Item2;
-            Contract.Assume(member != null);
 
             return Expression.Lambda<Func<T, TValue>>(
                 Expression.MakeMemberAccess(objParam, member),
                 objParam
             );
+        }
+
+        /// <summary>
+        ///     Finds the member matching a name and type
+        /// </summary>
+        /// <exception cref="MissingMemberException" />
+        public static Tuple<PropertyInfo, FieldInfo> AsMember<TValue>(string name)
+        {
+            Contract.Ensures(Contract.Result<Tuple<PropertyInfo, FieldInfo>>() != null);
+            Contract.Ensures(Contract.Result<Tuple<PropertyInfo, FieldInfo>>().Item1 != null ||
+                             Contract.Result<Tuple<PropertyInfo, FieldInfo>>().Item2 != null);
+
+            var result = AsMember(name);
+
+            if (result.Item1 != null && result.Item1.PropertyType != typeof(TValue) ||
+                result.Item2 != null && result.Item2.FieldType != typeof(TValue))
+                throw new MissingMemberException(typeof(TValue).Name, name);
+
+            return result;
+        }
+
+        /// <summary>
+        ///     Finds the member matching a name, regardless of type.
+        /// </summary>
+        /// <exception cref="MissingMemberException" />
+        public static Tuple<PropertyInfo, FieldInfo> AsMember(string name)
+        {
+            Contract.Ensures(Contract.Result<Tuple<PropertyInfo, FieldInfo>>() != null);
+            Contract.Ensures(Contract.Result<Tuple<PropertyInfo, FieldInfo>>().Item1 != null ||
+                             Contract.Result<Tuple<PropertyInfo, FieldInfo>>().Item2 != null);
+
+            var result = typeof(T).GetMember(name)
+                .Select(m => Tuple.Create(m as PropertyInfo, m as FieldInfo))
+                .FirstOrDefault(t => t.Item1 != null || t.Item2 != null);
+
+            if (result == null)
+                throw new MissingMemberException(typeof(T).Name, name);
+
+            Contract.Assume(result.Item1 != null || result.Item2 != null);
+            return result;
         }
     }
 }
