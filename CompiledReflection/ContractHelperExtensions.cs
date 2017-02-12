@@ -4,12 +4,12 @@ using System.Diagnostics.Contracts;
 namespace CompiledReflection
 {
     /// <summary>
-    /// Fixes CodeContracts for selected reflection methods
+    ///     Fixes CodeContracts for selected reflection methods
     /// </summary>
     public static class ContractHelperExtensions
     {
         /// <summary>
-        /// Makes a generic type
+        ///     Makes a generic type
         /// </summary>
         public static Type MakeType(this Type genericTypeDefinition, params Type[] typeArguments)
         {

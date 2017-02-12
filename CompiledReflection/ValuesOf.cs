@@ -44,7 +44,7 @@ namespace CompiledReflection
         private static Expression<Func<T, TValue>> MakeLambda<TValue>(string name)
         {
             var propertyOrField = AsMember<TValue>(name);
-            var member = (MemberInfo)propertyOrField.Item1 ?? propertyOrField.Item2;
+            var member = (MemberInfo) propertyOrField.Item1 ?? propertyOrField.Item2;
             Contract.Assume(member is PropertyInfo || member is FieldInfo);
 
             var objParam = Expression.Parameter(typeof(T));

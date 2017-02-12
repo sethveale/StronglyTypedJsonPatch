@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Reflection;
 using CompiledReflection.Invocation;
 using NUnit.Framework;
-using SethrysTestDomain;
 
 namespace CompiledReflection.Test.Invocation
 {
@@ -34,7 +32,9 @@ namespace CompiledReflection.Test.Invocation
         [Test]
         public void TestInvoke2()
         {
-            var endsWith = FuncInvoker.Create(typeof(string).GetMethod("EndsWith", new[] { typeof(string), typeof(StringComparison) }));
+            var endsWith =
+                FuncInvoker.Create(typeof(string).GetMethod("EndsWith",
+                    new[] { typeof(string), typeof(StringComparison) }));
             Assert.That((bool) endsWith.Invoke(_string, "BAR", StringComparison.OrdinalIgnoreCase), Is.True);
         }
 

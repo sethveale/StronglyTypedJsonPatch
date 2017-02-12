@@ -118,8 +118,8 @@ namespace CompiledReflection
         private static readonly ConcurrentDictionary<Type, object> Cache = new ConcurrentDictionary<Type, object>();
 
         private static TFuncOrLambda FindAndWrapConstructor<TFuncOrLambda>(
-            Func<Expression, ParameterExpression[], 
-            TFuncOrLambda> compile)
+            Func<Expression, ParameterExpression[],
+                TFuncOrLambda> compile)
             where TFuncOrLambda : class
         {
             var funcOrLambdaType = typeof(TFuncOrLambda);
@@ -127,13 +127,14 @@ namespace CompiledReflection
             Type funcType;
             if (funcOrLambdaType.IsGenericType && funcOrLambdaType.GetGenericTypeDefinition() == typeof(Expression<>))
             {
-                Contract.Assume(funcOrLambdaType.GenericTypeArguments != null && funcOrLambdaType.GenericTypeArguments.Length > 0);
+                Contract.Assume(funcOrLambdaType.GenericTypeArguments != null &&
+                                funcOrLambdaType.GenericTypeArguments.Length > 0);
                 funcType = funcOrLambdaType.GenericTypeArguments[0];
             }
             else
                 funcType = funcOrLambdaType;
 
-            var func = (TFuncOrLambda)Cache.GetOrAdd(funcOrLambdaType, _ => FindAndWrapConstructor(funcType, compile));
+            var func = (TFuncOrLambda) Cache.GetOrAdd(funcOrLambdaType, _ => FindAndWrapConstructor(funcType, compile));
             Contract.Assume(func != null);
             return func;
         }
@@ -146,7 +147,7 @@ namespace CompiledReflection
             Contract.Ensures(Contract.Result<TFunc>() != null);
 
             var typeArgs = funcType.GenericTypeArguments;
-            Contract.Assume((typeArgs != null) && (typeArgs.Length > 0));
+            Contract.Assume(typeArgs != null && typeArgs.Length > 0);
             Contract.Assume(Contract.ForAll(typeArgs, a => a != null));
 
             var parameters = typeArgs.Take(typeArgs.Length - 1).ToArray();
