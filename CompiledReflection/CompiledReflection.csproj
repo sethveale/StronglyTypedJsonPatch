@@ -84,6 +84,7 @@
     <Compile Include="Constructor.cs" />
     <Compile Include="ContractHelperExtensions.cs" />
     <Compile Include="DeReference.cs" />
+    <Compile Include="ExpressionExtensions.cs" />
     <Compile Include="Invocation\ActionInvoker.cs" />
     <Compile Include="Invocation\FuncInvoker.cs" />
     <Compile Include="Accessors.cs" />

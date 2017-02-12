@@ -50,12 +50,10 @@ namespace CompiledReflection
             Contract.Assume(objParam != null);
 
             var valueParam = Expression.Parameter(typeof(TValue));
+            var assign = Expression.Assign(Expression.MakeMemberAccess(objParam, member), valueParam);
+            Contract.Assume(assign != null);
 
-            return Expression.Lambda<Action<T, TValue>>(
-                Expression.Assign(Expression.MakeMemberAccess(objParam, member), valueParam),
-                objParam,
-                valueParam
-            );
+            return Expression.Lambda<Action<T, TValue>>(assign, objParam, valueParam);
         }
     }
 }

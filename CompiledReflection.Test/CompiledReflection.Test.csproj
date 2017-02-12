@@ -54,6 +54,7 @@
     <Compile Include="Invocation\TestActionInvoker.cs" />
     <Compile Include="Invocation\TestFuncInvoker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestExpressionConcat.cs" />
     <Compile Include="TestModifiers.cs" />
     <Compile Include="TestConstructor.cs" />
     <Compile Include="TestAccessors.cs" />
