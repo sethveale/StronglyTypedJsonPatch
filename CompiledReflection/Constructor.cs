@@ -70,7 +70,7 @@ namespace CompiledReflection
         #region AsLambda
 
         /// <summary>
-        ///     Creates a func that wraps a constructor for <typeparamref name="TResult" /> that all the given parameter types
+        ///     Creates a lambda that wraps a constructor for <typeparamref name="TResult" /> that all the given parameter types
         ///     (in order).
         /// </summary>
         public static Expression<Func<T1, TResult>> AsLambda<T1, TResult>()
@@ -81,7 +81,7 @@ namespace CompiledReflection
         }
 
         /// <summary>
-        ///     Creates a func that wraps a constructor for <typeparamref name="TResult" /> that all the given parameter types
+        ///     Creates a lambda that wraps a constructor for <typeparamref name="TResult" /> that all the given parameter types
         ///     (in order).
         /// </summary>
         public static Expression<Func<T1, T2, TResult>> AsLambda<T1, T2, TResult>()
@@ -92,7 +92,7 @@ namespace CompiledReflection
         }
 
         /// <summary>
-        ///     Creates a func that wraps a constructor for <typeparamref name="TResult" /> that all the given parameter types
+        ///     Creates a lambda that wraps a constructor for <typeparamref name="TResult" /> that all the given parameter types
         ///     (in order).
         /// </summary>
         public static Expression<Func<T1, T2, T3, TResult>> AsLambda<T1, T2, T3, TResult>()
@@ -103,7 +103,7 @@ namespace CompiledReflection
         }
 
         /// <summary>
-        ///     Creates a func that wraps a constructor for <typeparamref name="TResult" /> that all the given parameter types
+        ///     Creates a lambda that wraps a constructor for <typeparamref name="TResult" /> that all the given parameter types
         ///     (in order).
         /// </summary>
         public static Expression<Func<T1, T2, T3, T4, TResult>> AsLambda<T1, T2, T3, T4, TResult>()
@@ -125,7 +125,7 @@ namespace CompiledReflection
             var funcOrLambdaType = typeof(TFuncOrLambda);
 
             Type funcType;
-            if (funcOrLambdaType.GetGenericTypeDefinition() == typeof(Expression<>))
+            if (funcOrLambdaType.IsGenericType && funcOrLambdaType.GetGenericTypeDefinition() == typeof(Expression<>))
             {
                 Contract.Assume(funcOrLambdaType.GenericTypeArguments != null && funcOrLambdaType.GenericTypeArguments.Length > 0);
                 funcType = funcOrLambdaType.GenericTypeArguments[0];

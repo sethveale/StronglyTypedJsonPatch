@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompiledReflection", "Compi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompiledReflection.Test", "CompiledReflection.Test\CompiledReflection.Test.csproj", "{62F242F4-D49C-4640-8CEC-55CDFCE9EE60}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SethrysTestDomain", "SethrysTestDomain\SethrysTestDomain.csproj", "{E88117D2-2B2E-42B0-AE18-78BBDA07F763}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{62F242F4-D49C-4640-8CEC-55CDFCE9EE60}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62F242F4-D49C-4640-8CEC-55CDFCE9EE60}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62F242F4-D49C-4640-8CEC-55CDFCE9EE60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E88117D2-2B2E-42B0-AE18-78BBDA07F763}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E88117D2-2B2E-42B0-AE18-78BBDA07F763}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E88117D2-2B2E-42B0-AE18-78BBDA07F763}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E88117D2-2B2E-42B0-AE18-78BBDA07F763}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
