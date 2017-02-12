@@ -53,11 +53,16 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestConstructor.cs" />
+    <Compile Include="TestValuesOf.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CompiledReflection\CompiledReflection.csproj">
       <Project>{e12e547e-fd8b-42b3-84bc-377fc64475cf}</Project>
       <Name>CompiledReflection</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SethrysTestDomain\SethrysTestDomain.csproj">
+      <Project>{e88117d2-2b2e-42b0-ae18-78bbda07f763}</Project>
+      <Name>SethrysTestDomain</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -8,8 +8,7 @@ namespace SethrysTestDomain
         [Key, Range(typeof(long), Constants.MinIsbnString, Constants.MaxIsbnString)]
         public long Isbn { get; set; }
 
-        [Required, MaxLength(Constants.SmallTextLength)]
-        public string Name { get; set; }
+        [Required, MaxLength(Constants.SmallTextLength)] public string Name;
 
         [Required, MaxLength(Constants.SmallTextLength)]
         public string Author { get; set; }
